@@ -1,6 +1,6 @@
-# Universal Language Model Fine-tuning (ULMFiT) for Text Classification (Howard and Ruder 2018)
+# Universal Language Model Fine-tuning for Text Classification
 
-A brief overview of the paper that brought transfer learning to NLP. 
+A brief overview of the paper that brought transfer learning to NLP by Howard and Ruder (2018). 
 
 ## Overview
 
