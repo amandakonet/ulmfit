@@ -38,15 +38,18 @@ Does this sound familiar? It should if you have background with transformers! Th
 
 
 Further, the authors introduced two novel techniques to improve fine-tuning (steps 2 and 3 above):
-* Discriminative fine-tuning: 
+* **Discriminative fine-tuning**: 
     - Different layers of the model capture different types of information, so these layers should be fine-tuned to different extents
     - Each layer (l) fine-tuned with different learning rates, where 𝜂<sup>L-1</sup> = 𝜂<sup>L</sup>/26
 ![discft](img/disc_ft.png)
-* Slanted Triangular Learning Rates:
-    - 
+
+* **Slanted Triangular Learning Rates**:
+    - Test 
 
 Critical Analysis:
 * unidirectional
+* tokenizer not mentioned in text, but they use word tokenizers
+* great idea, but ULMFiT seems obsolete with the introduction and adoption of transformers. 
 
 ## Discussion 1
 what's the difference between this and bert? hint: what tokenization are they using? 
