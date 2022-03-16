@@ -4,11 +4,18 @@ A brief overview of the paper that brought transfer learning to NLP by Howard an
 
 ## Overview
 
-**Context**: At the time of publishing, transfer learning was a practice used in computer vision, but had not yet been *successfully* brought to NLP. 
+**Context**: At the time of publishing, transfer learning was a practice used in computer vision, but had not yet been *successfully* brought to NLP. Most models with state-of-the-art performance on NLP tasks had to be trained from scratch, and existing language models required millions of documents to fine-tune on a different domain.
+
+![nlphist](img/nlp_history.png)
 
 
+Howard and Ruder (2018) proposed the Universal Language Model Fine-tuning, a three-step process to incorporate transfer learning into NLP. This model was said to be *universal* because it provided a foundational language model that could be fine-tuned on any corpus for any text classification task (ex: sentiment analysis, topic classification, etc.)
 
-Howard and Ruder (2018) proposed the Universal Language Model Fine-tuning, a three-step process to incorporate transfer learning into NLP.
+The three steps are as follows:
+
+![ulmfitsteps](img/ulmfit_steps.png)
+
+* 
 
 
 
