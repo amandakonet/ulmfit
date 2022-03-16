@@ -4,27 +4,49 @@ A brief overview of the paper that brought transfer learning to NLP by Howard an
 
 ## Overview
 
-**Context**: At the time of publishing, transfer learning was a practice used in computer vision, but had not yet been *successfully* brought to NLP. Most models with state-of-the-art performance on NLP tasks had to be trained from scratch, and existing language models required millions of documents to fine-tune on a different domain.
+**Context**: 
+
+* At the time of publishing, transfer learning was a practice used in computer vision, but had not yet been *successfully* brought to NLP. 
+* Most models with state-of-the-art performance on NLP tasks had to be trained from scratch, and existing language models required millions of documents to fine-tune on a different domain.
+
+<p align="center">
+    An abbreviated history of NLP
+</p>
 
 ![nlphist](img/nlp_history.png)
 
 
-Howard and Ruder (2018) proposed the Universal Language Model Fine-tuning, a three-step process to incorporate transfer learning into NLP. This model was said to be *universal* because it provided a foundational language model that could be fine-tuned on any corpus for any text classification task (ex: sentiment analysis, topic classification, etc.)
+In Howard and Ruder (2018),
+
+* The authors proposed the **Universal Language Model Fine-tuning**, a three-step process to incorporate transfer learning into NLP. 
+* This model was said to be *universal* because it provided a foundational language model that could be fine-tuned on any corpus for any text classification task (ex: sentiment analysis, topic classification, etc.)
 
 The three steps are as follows:
 
 ![ulmfitsteps](img/ulmfit_steps.png)
 
-* 
+1. **Pretrain a large language model**: Captures general features of language
+   - Requires large, general corpus. Here, they use WikiText with 
+   - The model used was AWD-LSTM (Average SGD Weight-Dropped Long Short-Term Memory). LSTM models had sequential processing and the Markov property; they pre-date transformers.
+   - 1x cost
+2. **Fine-tune language model**: Learns data-specific features
+   - Requires texts from domain of interest
+3. **Target task classifier fine-tuning**: Transfer learning to a target task
+   - Fine-tune the model from step 2) on a classification task
+
+Does this sound familiar? It should if you have background with transformers! This process in conceptually similar, and this paper was released only mere months before BERT. 
 
 
-
-Further, they introduced two novel techniques to improve fine-tuning:
-* Discriminative fine-tuning
-* Slanted Triangular Learning Rates
+Further, the authors introduced two novel techniques to improve fine-tuning (steps 2 and 3 above):
+* Discriminative fine-tuning: 
+    - Different layers of the model capture different types of information, so these layers should be fine-tuned to different extents
+    - Each layer (l) fine-tuned with different learning rates, where 𝜂<sup>L-1</sup> = 𝜂<sup>L</sup>/26
+![discft](img/disc_ft.png)
+* Slanted Triangular Learning Rates:
+    - 
 
 Critical Analysis:
-* 
+* unidirectional
 
 ## Discussion 1
 what's the difference between this and bert? hint: what tokenization are they using? 
