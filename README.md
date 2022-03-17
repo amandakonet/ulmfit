@@ -7,7 +7,7 @@ A brief overview of the paper by Howard and Ruder (2018) that brought transfer l
 **Context**: 
 
 * At the time of publishing, transfer learning was a practice used in computer vision, but had not yet been *successfully* brought to NLP. 
-* Most models with state-of-the-art performance on NLP tasks had to be trained from scratch, and existing language models required millions of documents to fine-tune on a different domain.
+* Existing language models required millions of documents to fine-tune on a different domain and existing fine-tuning approaches only worked on the very last layer of these models.
 
 <p align="center">
     An abbreviated history of NLP
@@ -31,10 +31,14 @@ The three steps are as follows:
    - 1x cost
 2. **Fine-tune language model**: Learns data-specific features
    - Requires texts from domain of interest
+   - Works with even "small" datasets
 3. **Target task classifier fine-tuning**: Transfer learning to a target task
    - Fine-tune the model from step 2) on a classification task
    - Adds two linear blocks and a final RELU activation and softmax; only params in the model that are trained from scratch
-   - *Gradual unfreezing*: Rather than fine-tuning all layers at once. Gradually unfreeze the model starting from the last layer as it contains the least general knowledge.
+   - *Gradual unfreezing*: Instead of fine-tuning all classification layers at once, they propose freezing all layers and gradually unfreezing starting from the layer with the least general knowledge (the last layer)
+
+Results below suggest that this approach works far better than working from scratch, even when the dataset is very small (~100 observations).
+![ulmfitres](img/ulmfit_results.png)
 
 Does this sound familiar? It should if you have background with transformers! This process in conceptually similar, and this paper was released only mere months before BERT. 
 
@@ -46,13 +50,13 @@ Further, the authors introduced two novel techniques to improve fine-tuning (ste
 ![discft](img/disc_ft.png)
 
 * **Slanted Triangular Learning Rates**:
-    - Test 
+    - The desired fine-tuning behavior is for the model to quickly converge to a desirable parameter space, and then spend the rest of the time refining
+    - Suggested solution is to linearly increase the learning rate and then linearly decay it, resulting in the behavior graphed below: 
 ![slantedlr](img/slanted_lr.png)
 
 Critical Analysis:
-* unidirectional
-* tokenizer not mentioned in text, but they use word tokenizers
-* great idea, but ULMFiT seems obsolete with the introduction and adoption of transformers. 
+* _What is overlooked?_ This model is unidirectional and focuses on text classification. How would this be expanded for something like text generation or translation?
+* _Have others disputed the findings?_ Not necessarily, but their approach to this setup (fine-tune language model, fine-tune on dataset, transfer knowledge to another classification task) is obsolete. LSTM not as efficient or accurate as transformers. 
 
 ## Discussion 1
 what's the difference between this and bert? hint: what tokenization are they using? 
