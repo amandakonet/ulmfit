@@ -13,7 +13,7 @@ A brief overview of the paper that brought transfer learning to NLP by Howard an
     An abbreviated history of NLP
 </p>
 
-![nlphist](img/nlp_history.png)
+![nlphist](img/nlp_history2.png)
 
 
 In Howard and Ruder (2018),
@@ -40,7 +40,7 @@ Does this sound familiar? It should if you have background with transformers! Th
 Further, the authors introduced two novel techniques to improve fine-tuning (steps 2 and 3 above):
 * **Discriminative fine-tuning**: 
     - Different layers of the model capture different types of information, so these layers should be fine-tuned to different extents
-    - Each layer (l) fine-tuned with different learning rates, where 𝜂<sup>L-1</sup> = 𝜂<sup>L</sup>/26
+    - Each layer is fine-tuned with different learning rates, where 𝜂<sup>L-1</sup> = 𝜂<sup>L</sup>/26
 ![discft](img/disc_ft.png)
 
 * **Slanted Triangular Learning Rates**:
