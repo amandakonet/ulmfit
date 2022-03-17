@@ -26,7 +26,7 @@ The three steps are as follows:
 ![ulmfitsteps](img/ulmfit_steps.png)
 
 1. **Pretrain a large language model**: Captures general features of language
-   - Requires large, general corpus. Here, they use WikiText with 28k articles
+   - Requires large, general corpus. Here, they use WikiText with 28k articles, 103M tokens
    - The model used was AWD-LSTM (Average SGD Weight-Dropped Long Short-Term Memory). LSTM models had sequential processing and the Markov property; they pre-date transformers
    - 1x cost
 2. **Fine-tune language model**: Learns data-specific features
@@ -59,11 +59,13 @@ Critical Analysis:
 * _Have others disputed the findings?_ Not necessarily, but their approach to this setup (fine-tune language model, fine-tune on dataset, transfer knowledge to another classification task) is obsolete. LSTM not as efficient or accurate as transformers. 
 
 ## Discussion 1
-what's the difference between this and bert? hint: what tokenization are they using? 
+How could this be altered to use transformers?
 
 ## Discussion 2
+How would slanted learning rates and discriminative fine-tuning combine to acheive robust fine-tuning? (*Hint:*)
 
 ## Discussion 3
+
 
 ## Resource Links
 
