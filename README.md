@@ -1,6 +1,6 @@
 # Universal Language Model Fine-tuning for Text Classification
 
-A brief overview of the paper that brought transfer learning to NLP by Howard and Ruder (2018). 
+A brief overview of the paper by Howard and Ruder (2018) that brought transfer learning to NLP. 
 
 ## Overview
 
@@ -13,7 +13,7 @@ A brief overview of the paper that brought transfer learning to NLP by Howard an
     An abbreviated history of NLP
 </p>
 
-![nlphist](img/nlp_history2.png)
+![nlphist](img/nlp_history_2.png)
 
 
 In Howard and Ruder (2018),
@@ -26,13 +26,15 @@ The three steps are as follows:
 ![ulmfitsteps](img/ulmfit_steps.png)
 
 1. **Pretrain a large language model**: Captures general features of language
-   - Requires large, general corpus. Here, they use WikiText with 
-   - The model used was AWD-LSTM (Average SGD Weight-Dropped Long Short-Term Memory). LSTM models had sequential processing and the Markov property; they pre-date transformers.
+   - Requires large, general corpus. Here, they use WikiText with 28k articles
+   - The model used was AWD-LSTM (Average SGD Weight-Dropped Long Short-Term Memory). LSTM models had sequential processing and the Markov property; they pre-date transformers
    - 1x cost
 2. **Fine-tune language model**: Learns data-specific features
    - Requires texts from domain of interest
 3. **Target task classifier fine-tuning**: Transfer learning to a target task
    - Fine-tune the model from step 2) on a classification task
+   - Adds two linear blocks and a final RELU activation and softmax; only params in the model that are trained from scratch
+   - *Gradual unfreezing*: Rather than fine-tuning all layers at once. Gradually unfreeze the model starting from the last layer as it contains the least general knowledge.
 
 Does this sound familiar? It should if you have background with transformers! This process in conceptually similar, and this paper was released only mere months before BERT. 
 
@@ -45,6 +47,7 @@ Further, the authors introduced two novel techniques to improve fine-tuning (ste
 
 * **Slanted Triangular Learning Rates**:
     - Test 
+![slantedlr](img/slanted_lr.png)
 
 Critical Analysis:
 * unidirectional
