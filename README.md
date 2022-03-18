@@ -15,7 +15,6 @@ A brief overview of the paper by Howard and Ruder (2018) that brought transfer l
 
 ![nlphist](img/nlp_history_2.png)
 
-
 In Howard and Ruder (2018),
 
 * The authors proposed the **Universal Language Model Fine-tuning**, a three-step process to incorporate transfer learning into NLP. 
@@ -40,13 +39,10 @@ The three steps are as follows:
 Results below suggest that this approach works far better than working from scratch, even when the dataset is very small (~100 observations).
 ![ulmfitres](img/ulmfit_results.png)
 
-Does this sound familiar? It should if you have background with transformers! This process in conceptually similar, and this paper was released only mere months before BERT. 
-
-
 Further, the authors introduced two novel techniques to improve fine-tuning (steps 2 and 3 above):
 * **Discriminative fine-tuning**: 
     - Different layers of the model capture different types of information, so these layers should be fine-tuned to different extents
-    - Each layer is fine-tuned with different learning rates, where 𝜂<sup>L-1</sup> = 𝜂<sup>L</sup>/26
+    - Each layer is fine-tuned with different learning rates, where 𝜂<sup>L-1</sup> = 𝜂<sup>L</sup>/2.6
 ![discft](img/disc_ft.png)
 
 * **Slanted Triangular Learning Rates**:
@@ -55,14 +51,16 @@ Further, the authors introduced two novel techniques to improve fine-tuning (ste
 ![slantedlr](img/slanted_lr.png)
 
 Critical Analysis:
-* _What is overlooked?_ This model is unidirectional and focuses on text classification. How would this be expanded for something like text generation or translation?
+* _What is overlooked?_ What empirical evidence is there for reducing the learning rate by a factor of 2.6 from layer n to layer n-1? Further, there is little speculation as to why they believe discriminative fine-tuning and slanted tirangular learning rates work well.
 * _Have others disputed the findings?_ Not necessarily, but their approach to this setup (fine-tune language model, fine-tune on dataset, transfer knowledge to another classification task) is obsolete. LSTM not as efficient or accurate as transformers. 
 
 ## Discussion 1
-How could this be altered to use transformers?
+How might a slanted triangular learning rate scheduler be useful in fine-tuning? (Note: we are just speculating because the authors did not provide their own intuition!)
+* Recall: This scheduler starts the learning rate off very small, slowly increasing it until it reaches a max, and then decreases it even more slowly.
+* *Hint: At the beginning of fine-tuning, we're introducing new vocabulary or re-defining existing vocab. Would this make error (cost) high or low? How does that affect training?)*
 
 ## Discussion 2
-How would slanted learning rates and discriminative fine-tuning combine to acheive robust fine-tuning? (*Hint:*)
+How could this framework be improved or updated with more current innovations? (*Hint: how could we involve transformers?*)
 
 ## Discussion 3
 
@@ -71,5 +69,5 @@ How would slanted learning rates and discriminative fine-tuning combine to achei
 
 - Link to the paper, [Universal Language Model Fine-tuning for Text Classification](https://arxiv.org/abs/1801.06146)
 - ULMFiT, [the Layman's introduction](https://nlp.fast.ai/classification/2018/05/15/introducing-ulmfit.html) 
-- [BERT vs. ULMFiT]()
-- [Example code from fast.ai]()
+- [Example tutorial+code from fast.ai](https://docs.fast.ai/tutorial.text.html)
+- [Why use ULMFiT over transformers? This github user has been developing code, models, and data for ULMFiT despite the models relative unpopularity](https://github.com/floleuerer/fastai_ulmfit)
