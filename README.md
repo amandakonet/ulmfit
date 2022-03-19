@@ -70,4 +70,4 @@ How could this framework be improved or updated with more current innovations? (
 - Link to the paper, [Universal Language Model Fine-tuning for Text Classification](https://arxiv.org/abs/1801.06146)
 - ULMFiT, [the Layman's introduction](https://nlp.fast.ai/classification/2018/05/15/introducing-ulmfit.html) 
 - [Example tutorial+code from fast.ai](https://docs.fast.ai/tutorial.text.html)
-- Why use ULMFiT over transformers? This github user has been [developing code, models, and data for ULMFiT]((https://github.com/floleuerer/fastai_ulmfit) despite the models relative unpopularity
+- Why use ULMFiT over transformers? This github user has been [developing code, models, and data for ULMFiT](https://github.com/floleuerer/fastai_ulmfit) despite the models relative unpopularity
