@@ -17,7 +17,7 @@ A brief overview of the paper by Howard and Ruder (2018) that brought transfer l
 
 In Howard and Ruder (2018),
 
-* The authors proposed the **Universal Language Model Fine-tuning**, a three-step process to incorporate transfer learning into NLP. 
+* The authors proposed the **Universal Language Model Fine-tuning**, a three-step framework to incorporate transfer learning into NLP. 
 * This model was said to be *universal* because it provided a foundational language model that could be fine-tuned on any corpus for any text classification task (ex: sentiment analysis, topic classification, etc.)
 
 The three steps are as follows:
@@ -70,4 +70,4 @@ How could this framework be improved or updated with more current innovations? (
 - Link to the paper, [Universal Language Model Fine-tuning for Text Classification](https://arxiv.org/abs/1801.06146)
 - ULMFiT, [the Layman's introduction](https://nlp.fast.ai/classification/2018/05/15/introducing-ulmfit.html) 
 - [Example tutorial+code from fast.ai](https://docs.fast.ai/tutorial.text.html)
-- [Why use ULMFiT over transformers? This github user has been developing code, models, and data for ULMFiT despite the models relative unpopularity](https://github.com/floleuerer/fastai_ulmfit)
+- Why use ULMFiT over transformers? This github user has been [developing code, models, and data for ULMFiT]((https://github.com/floleuerer/fastai_ulmfit) despite the models relative unpopularity
