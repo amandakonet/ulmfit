@@ -26,7 +26,8 @@ The three steps are as follows:
 
 1. **Pretrain a large language model**: Captures general features of language
    - Requires large, general corpus. Here, they use WikiText with 28k articles, 103M tokens
-   - The model used was AWD-LSTM (Average SGD Weight-Dropped Long Short-Term Memory). LSTM models had sequential processing and the Markov property; they pre-date transformers
+   - The model used was AWD-LSTM (Average SGD Weight-Dropped Long Short-Term Memory). Not a favored NLP model today, as LSTM models must be processed sequentially and struggle with long-range dependencies.
+   - Word-based tokenization
    - 1x cost
 2. **Fine-tune language model**: Learns data-specific features
    - Requires texts from domain of interest
@@ -57,13 +58,15 @@ Critical Analysis:
 ## Discussion 1
 How might a slanted triangular learning rate scheduler be useful in fine-tuning? (Note: we are just speculating because the authors did not provide their own intuition!)
 * Recall: This scheduler starts the learning rate off very small, slowly increasing it until it reaches a max, and then decreases it even more slowly.
-* *Hint: At the beginning of fine-tuning, we're introducing new vocabulary or re-defining existing vocab. Would this make error (cost) high or low? How does that affect training?)*
+* *Helper Question: At the beginning of fine-tuning, we're introducing new vocabulary or re-defining existing vocab. Would this make error (cost) high or low? How does that affect training?)*
 
 ## Discussion 2
-How could this framework be improved or updated with more current innovations? (*Hint: how could we involve transformers?*)
+What are potential disadvantages with this method?
+* Recall: This method uses LSTMS and word-based tokenization. What disadvantages come with these?
 
 ## Discussion 3
-
+How could this framework be improved or updated with more current innovations? Is there a point considering how transformers have taken over NLP?
+*Helper Question: how could we involve transformers?
 
 ## Resource Links
 
